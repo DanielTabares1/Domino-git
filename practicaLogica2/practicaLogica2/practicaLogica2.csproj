@@ -46,11 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Ficha.cs" />
+    <Compile Include="ventanaJuego.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ventanaJuego.Designer.cs">
+      <DependentUpon>ventanaJuego.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaLogin.Designer.cs">
+      <DependentUpon>VentanaLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +70,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ventanaJuego.resx">
+      <DependentUpon>ventanaJuego.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaLogin.resx">
+      <DependentUpon>VentanaLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

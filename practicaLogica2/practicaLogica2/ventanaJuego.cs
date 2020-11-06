@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace practicaLogica2
 {
-    public partial class Form1 : Form
+    public partial class ventanaJuego : Form
     {
-        public Form1()
+        public ventanaJuego()
         {
             InitializeComponent();
         }
