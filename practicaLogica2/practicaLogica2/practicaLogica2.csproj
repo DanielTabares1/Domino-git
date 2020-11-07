@@ -46,7 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NodoDoble.cs" />
     <Compile Include="Ficha.cs" />
+    <Compile Include="LDL.cs" />
+    <Compile Include="LSL.cs" />
+    <Compile Include="NodoSimple.cs" />
     <Compile Include="ventanaJuego.cs">
       <SubType>Form</SubType>
     </Compile>
