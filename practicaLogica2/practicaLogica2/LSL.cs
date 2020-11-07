@@ -88,6 +88,24 @@ namespace practicaLogica2
             }                                             
                    
         }
+        public int length()
+        {
+            if(primero == null)
+            {
+                return 0;
+            }
+            else
+            {
+                NodoSimple p = primero;
+                int vueltas = 0;
+                while (!finDeRecorrido(p))
+                {
+                    p = p.getLiga();
+                    vueltas++;
+                }
+                return vueltas;
+            }
+        }
 
     }
 }

@@ -101,5 +101,23 @@ namespace practicaLogica2
             }
             
         }
+        public int length()
+        {
+            if(primero == null)
+            {
+                return 0;
+            }
+            else
+            {
+                NodoDoble p = primero;
+                int vueltas = 0;
+                while (!finDeRecorrido(p))
+                {
+                    p = p.getld();
+                    vueltas++;
+                }
+                return vueltas;
+            }
+        }
     }
 }
