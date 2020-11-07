@@ -10,48 +10,25 @@ using System.Windows.Forms;
 
 namespace practicaLogica2
 {
-    public partial class VentanaLogin : Form
+    public partial class ventanaLogin : Form
     {
-        public VentanaLogin()
+        public ventanaLogin()
         {
             InitializeComponent();
         }
 
-        private void entra(object sender, EventArgs e)
+        private void comenzar(object sender, EventArgs e)
         {
-            button2.Top -= 8;
+            ventanaJuego ventanaJuego1 = new ventanaJuego(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
+            ventanaJuego1.Show();
+            this.Hide();            
         }
 
-        private void sale(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            button2.Top += 8;
-        }
-
-        private void entra1(object sender, EventArgs e)
-        {
-            button1.Top -= 8;
-        }
-
-        private void sale1(object sender, EventArgs e)
-        {
-            button1.Top += 8;
-        }
-
-        private void entra2(object sender, EventArgs e)
-        {
-            button3.Top -= 8;
-        }
-
-        private void sale2(object sender, EventArgs e)
-        {
-            button3.Top += 8;
-        }
-
-        private void clickJugar(object sender, EventArgs e)
-        {            
-            ventanaJuego ventanaJuego = new ventanaJuego();
-            ventanaJuego.Show();
-            this.Hide();
+            VentanaInicio v = new VentanaInicio();
+            v.Show();
+            this.Close();
         }
     }
 }

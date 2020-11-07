@@ -12,9 +12,18 @@ namespace practicaLogica2
 {
     public partial class ventanaJuego : Form
     {
-        public ventanaJuego()
+        public string nombre1, nombre2, nombre3, nombreJugador;
+        
+        public ventanaJuego(string nombre1, string nombre2, string nombre3, string nombreJugador)
         {
             InitializeComponent();
+            label4.Text = nombre1;
+            label1.Text = nombre2;
+            label2.Text = nombre3;
+            label3.Text = nombreJugador;
+            Graphics g = juego.CreateGraphics();  
+            /*empezarJuego();creo que acá está listo para hacer el juego*/
         }
+
     }
 }

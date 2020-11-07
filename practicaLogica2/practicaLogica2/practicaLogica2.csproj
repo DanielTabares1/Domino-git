@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ventanaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ventanaLogin.Designer.cs">
+      <DependentUpon>ventanaLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="NodoDoble.cs" />
     <Compile Include="Ficha.cs" />
     <Compile Include="LDL.cs" />
@@ -57,11 +63,11 @@
     <Compile Include="ventanaJuego.Designer.cs">
       <DependentUpon>ventanaJuego.cs</DependentUpon>
     </Compile>
-    <Compile Include="VentanaLogin.cs">
+    <Compile Include="VentanaInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VentanaLogin.Designer.cs">
-      <DependentUpon>VentanaLogin.cs</DependentUpon>
+    <Compile Include="VentanaInicio.Designer.cs">
+      <DependentUpon>VentanaInicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,8 +83,11 @@
     <EmbeddedResource Include="ventanaJuego.resx">
       <DependentUpon>ventanaJuego.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VentanaLogin.resx">
-      <DependentUpon>VentanaLogin.cs</DependentUpon>
+    <EmbeddedResource Include="VentanaInicio.resx">
+      <DependentUpon>VentanaInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ventanaLogin.resx">
+      <DependentUpon>ventanaLogin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

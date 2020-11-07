@@ -16,7 +16,8 @@ namespace practicaLogica2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VentanaLogin());
+            VentanaInicio ventanainicio1 = new VentanaInicio();
+            Application.Run(ventanainicio1);
         }
     }
 }
