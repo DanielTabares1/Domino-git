@@ -38,7 +38,7 @@ namespace practicaLogica2
         {
             return p == null;
         }
-        public void insertar(object dato)
+        public void insertar(object dato)  // sólo al final
         {
             NodoSimple x = new NodoSimple(dato);
             if(primero == null)
@@ -106,6 +106,5 @@ namespace practicaLogica2
                 return vueltas;
             }
         }
-
     }
 }

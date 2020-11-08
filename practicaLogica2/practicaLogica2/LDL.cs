@@ -29,7 +29,6 @@ namespace practicaLogica2
         }
 
         //métodos de la clase
-
         public bool esVacia()
         {
             return primero == null;
