@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="principal.cs" />
     <Compile Include="ventanaLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,7 +54,7 @@
       <DependentUpon>ventanaLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="NodoDoble.cs" />
-    <Compile Include="Ficha.cs" />
+    <Compile Include="ficha.cs" />
     <Compile Include="LDL.cs" />
     <Compile Include="LSL.cs" />
     <Compile Include="NodoSimple.cs" />

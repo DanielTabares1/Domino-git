@@ -8,7 +8,8 @@ namespace practicaLogica2
 {
     public class LSL
     {
-        private NodoSimple primero, ultimo;        
+        private NodoSimple primero, ultimo;
+        public int length = 0;
 
         //Método Constructor
         public LSL() { }
@@ -51,6 +52,7 @@ namespace practicaLogica2
                 ultimo.setLiga(x);
                 ultimo = x;
             }
+            length += 1;
         }
         public void desconectar(NodoSimple x)
         {
@@ -85,26 +87,47 @@ namespace practicaLogica2
                     ultimo = y;
                 }
                 p.setLiga(null);
-            }                                             
-                   
-        }
-        public int length()
+            }
+            length -= 1;               
+        }        
+        /*public void imprimirLista()
         {
-            if(primero == null)
+            NodoSimple p;
+            p = primerNodo();
+            while (!finDeRecorrido(p))
             {
-                return 0;
+                                
             }
-            else
+        }*/
+        public bool existe(object d)
+        {
+            ficha buscada = (ficha)d;
+            NodoSimple p = primero;
+            while(p!= null)
             {
-                NodoSimple p = primero;
-                int vueltas = 0;
-                while (!finDeRecorrido(p))
+                ficha f = (ficha)p.getDato();
+                if(buscada.Izquierda == f.Izquierda && buscada.Derecha == f.Derecha)
                 {
-                    p = p.getLiga();
-                    vueltas++;
+                    return true;
                 }
-                return vueltas;
+                p = p.getLiga();
             }
+            return false;
+        }
+        public bool existe1(object d)
+        {
+            ficha buscada = (ficha)d;
+            NodoSimple p = primero;
+            while (p != null)
+            {
+                ficha f = (ficha)p.getDato();
+                if (buscada.Izquierda == f.Izquierda || buscada.Derecha == f.Derecha)
+                {
+                    return true;
+                }
+                p = p.getLiga();
+            }
+            return false;
         }
     }
 }

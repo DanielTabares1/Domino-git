@@ -38,7 +38,7 @@ namespace practicaLogica2
                     dato2 = guardar;
                 }
 
-                Ficha f = new Ficha(dato1, dato2);
+                ficha f = new ficha(dato1, dato2);
                 jugador.insertar(f);
                 //inserto las imagenes de los botones
                 string d1, d2;
