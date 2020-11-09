@@ -19,6 +19,7 @@ namespace practicaLogica2
 
         private void empezar(object sender, EventArgs e)
         {
+            principal.principal1();
             button8.Visible = false;
             pintarFichas();
             //prueba para fichas de jugador y de juego

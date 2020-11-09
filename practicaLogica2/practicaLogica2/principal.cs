@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace practicaLogica2
@@ -44,10 +45,11 @@ namespace practicaLogica2
                 p = jugador.primerNodo();
                 while (p != null)
                 {
-                    ficha f = (ficha)p.getDato();
+                    ficha f = p.getDato();
                     Console.WriteLine(f.Izquierda + " " + f.Derecha);
+                    p = p.getLiga();
                 }
-                p = p.getLiga();
+                
             }
             void imprimirjuego(LDL juego)
             {
@@ -57,8 +59,9 @@ namespace practicaLogica2
                 {
                     ficha f = (ficha)p.getDato();
                     Console.WriteLine(f.Izquierda + " " + f.Derecha);
+                    p = p.getld();
                 }
-                p = p.getld();
+                
             }
             /*void imprimirlista(List<ficha> jugador)
             {
@@ -201,12 +204,14 @@ namespace practicaLogica2
                         var rand = new Random();
                         int nuevo = rand.Next(0, fichas1.length); //acá vamos
                         NodoSimple p = fichas1.primerNodo();
-                        for(int k = 0; k < nuevo; k++)
+                        for (int k = 0; k < nuevo-1; k++)
                         {
                             p = p.getLiga();
+                            Console.WriteLine(p.getDato().Derecha + " " + p.getDato().Izquierda);
                         }
-                        persona.insertar(p);
-                        fichas1.desconectar(p);                        
+                        persona.insertar(p.getDato());                         
+                        fichas1.desconectar(p);
+                        Thread.Sleep(100);
                     }
                 }
                 /*void Repartir(List<ficha> persona)
@@ -243,7 +248,7 @@ namespace practicaLogica2
                     {
                         juego1.insertarDerecha(f);
                         NodoSimple p = jugador.primerNodo();
-                        while (!p.getDato().Equals(f))
+                        while (p.getDato().Derecha != f.Derecha && p.getDato().Izquierda != f.Izquierda)
                         {
                             p = p.getLiga();
                         }
@@ -341,7 +346,8 @@ namespace practicaLogica2
                                 i++;
                                 p = p.getLiga();
                             }
-                            turnos1[actual].desconectar(p);
+                            //turnos1[actual].desconectar(p);
+                            turnos1[actual].removeAt(turnos1[actual].indexOf(p.getDato())-1);
                             Console.WriteLine("El juego esta así:");
                             imprimirjuego(juego1);
 
@@ -658,16 +664,17 @@ namespace practicaLogica2
                             NodoSimple p = turnos1[actual].primerNodo();
                             while (i < (turnos1[actual].length))
                             {
-                                ficha a = (ficha)p.getDato();
+                                ficha a = p.getDato();
                                 if(a.Izquierda == final || a.Derecha == comienzo)
                                 {
                                     posible1.insertar(a);
                                 }
-                                i = i + 1;                               
-
+                                i = i + 1;
+                                p = p.getLiga();
                             }
                             i = 0;
-                            while(i < (turnos1[actual].length))
+                            p = turnos1[actual].primerNodo();
+                            while (i < (turnos1[actual].length))
                             {
                                 ficha a = (ficha)p.getDato();
                                 a.intercambiar();
@@ -679,6 +686,7 @@ namespace practicaLogica2
                                     }                                    
                                 }
                                 i = i + 1;
+                                p = p.getLiga();
                             }
 
                             Console.WriteLine("Sus opciones son las siguientes:");

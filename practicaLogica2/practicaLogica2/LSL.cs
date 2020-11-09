@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,7 +40,7 @@ namespace practicaLogica2
         {
             return p == null;
         }
-        public void insertar(object dato)  // sólo al final
+        public void insertar(ficha dato)  // sólo al final
         {
             NodoSimple x = new NodoSimple(dato);
             if(primero == null)
@@ -57,49 +58,61 @@ namespace practicaLogica2
         public void desconectar(NodoSimple x)
         {
             if(primero == x)                  //si se elimina el primero
-            {
-                if (ultimo == primero)       //si es el único
+            {                
+                if(ultimo == primero)       //si es el único
                 {
                     primero = null;
                     ultimo = null;
+                    length -= 1;
                     return;
                 }
                 else
-                {
+                {                    
                     primero = x.getLiga();
                     x.setLiga(null);
+                    length -= 1;
                     return;
                 }                
             }
             else
-            {
+            {                
                 NodoSimple p, y;
                 p = primero;
                 y = null;
-                while (!finDeRecorrido(p) && p!=x)
+                while (!finDeRecorrido(p) && p != x)
                 {
                     y = p;
                     p = p.getLiga();
                 }
                 y.setLiga(p.getLiga());                
                 if (ultimo == p)
-                {
+                {                   
                     ultimo = y;
                 }
                 p.setLiga(null);
             }
             length -= 1;               
-        }        
-        /*public void imprimirLista()
+        }
+        public void removeAt(int indice)
+        {
+            NodoSimple p = primero;
+            for (int i = 0; i < indice; i++)
+            {
+                p = p.getLiga();
+            }
+            desconectar(p);
+        }
+        public void pintarLSL()
         {
             NodoSimple p;
             p = primerNodo();
             while (!finDeRecorrido(p))
             {
-                                
-            }
-        }*/
-        public bool existe(object d)
+                Console.Write(p.getDato().Izquierda+"|"+p.getDato().Derecha+" ");
+                p = p.getLiga();
+            }            
+        }
+        public bool existe(ficha d)
         {
             ficha buscada = (ficha)d;
             NodoSimple p = primero;
@@ -114,7 +127,7 @@ namespace practicaLogica2
             }
             return false;
         }
-        public bool existe1(object d)
+        public bool existe1(ficha d)
         {
             ficha buscada = (ficha)d;
             NodoSimple p = primero;
@@ -128,6 +141,22 @@ namespace practicaLogica2
                 p = p.getLiga();
             }
             return false;
-        }
+        }        
+        public int indexOf(ficha f)
+        {
+            NodoSimple p = primero;
+            int indice = 0;
+            while(!finDeRecorrido(p) && p.getDato().Izquierda != f.Izquierda &&
+                p.getDato().Derecha != f.Derecha)
+            {
+                p = p.getLiga();
+                indice++;
+            }
+            if (indice >= length)
+            {
+                return -1;
+            }
+            return indice;
+        }        
     }
 }
