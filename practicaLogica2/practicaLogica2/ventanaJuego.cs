@@ -697,7 +697,9 @@ namespace practicaLogica2
                 }
                 actual++;                
             }
-            botonesPosibles();            
+            botonesPosibles();
+            dialogos.Text = "Es el turno de usted";
+
         }
         public void jugarJugador(int d1,int d2)
         {            
@@ -850,8 +852,15 @@ namespace practicaLogica2
             {
                 sumatoria1(actual, turnos1[0], turnos1[1], turnos1[2], puntajes1);
             }
-            dialogos.Text = (puntajes1[0] + "   " + puntajes1[1] + "   " + puntajes1[2] + "   " + puntajes1[3]);
+            dialogos.Text = (jugadores[0] + "   "+jugadores[1]+"   "+jugadores[2]+"   "+"Usted \n"+
+                puntajes1[0] + "        " + puntajes1[1] + "        " + puntajes1[2] + "        " + puntajes1[3]);
         }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+            //no hace nada pero no se puede borrar
+        }
+
         public void sumarPorPuntos()
         {
             sumatoriapersonal1(hugo1, 0);

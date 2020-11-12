@@ -110,6 +110,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.panel4);
             this.splitContainer1.Panel1.Controls.Add(this.panel3);
             this.splitContainer1.Panel1.Controls.Add(this.panel2);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -124,7 +125,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(906, 76);
+            this.label3.Location = new System.Drawing.Point(12, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 33);
             this.label3.TabIndex = 6;
@@ -144,7 +145,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(12, 76);
+            this.label1.Location = new System.Drawing.Point(912, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 33);
             this.label1.TabIndex = 4;
@@ -233,7 +234,7 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.foto3);
-            this.panel3.Location = new System.Drawing.Point(912, 112);
+            this.panel3.Location = new System.Drawing.Point(16, 112);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(96, 376);
             this.panel3.TabIndex = 1;
@@ -263,7 +264,7 @@
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.foto1);
-            this.panel2.Location = new System.Drawing.Point(16, 112);
+            this.panel2.Location = new System.Drawing.Point(912, 112);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(96, 376);
             this.panel2.TabIndex = 0;
