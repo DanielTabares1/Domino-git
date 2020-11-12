@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.juego = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -47,6 +49,8 @@
             this.foto1 = new System.Windows.Forms.PictureBox();
             this.panelJugador = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.dialogos = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -55,7 +59,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -149,15 +152,45 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Silver;
+            this.panel5.Controls.Add(this.button10);
+            this.panel5.Controls.Add(this.button9);
             this.panel5.Controls.Add(this.juego);
             this.panel5.Location = new System.Drawing.Point(160, 160);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(704, 320);
             this.panel5.TabIndex = 3;
             // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.ForestGreen;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Segoe Script", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(388, 110);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(185, 87);
+            this.button10.TabIndex = 2;
+            this.button10.Text = "Agregar por la\r\nDerecha";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Visible = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.ForestGreen;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Segoe Script", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(140, 110);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(185, 87);
+            this.button9.TabIndex = 1;
+            this.button9.Text = "Agregar por la\r\nIzquierda";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Visible = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // juego
             // 
-            this.juego.BackColor = System.Drawing.Color.Transparent;
+            this.juego.BackColor = System.Drawing.Color.DarkGreen;
             this.juego.Dock = System.Windows.Forms.DockStyle.Fill;
             this.juego.Location = new System.Drawing.Point(0, 0);
             this.juego.Name = "juego";
@@ -273,6 +306,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.Silver;
+            this.splitContainer2.Panel1.Controls.Add(this.dialogos);
             this.splitContainer2.Panel1.Controls.Add(this.button8);
             this.splitContainer2.Panel1.Controls.Add(this.label4);
             // 
@@ -290,6 +324,26 @@
             this.splitContainer2.SplitterDistance = 400;
             this.splitContainer2.TabIndex = 0;
             // 
+            // dialogos
+            // 
+            this.dialogos.AutoSize = true;
+            this.dialogos.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dialogos.Location = new System.Drawing.Point(4, 34);
+            this.dialogos.Name = "dialogos";
+            this.dialogos.Size = new System.Drawing.Size(0, 26);
+            this.dialogos.TabIndex = 9;
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(279, 16);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(94, 64);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "Empezar\r\nRonda";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.empezar);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -302,70 +356,108 @@
             // 
             // button6
             // 
+            this.button6.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button6.Enabled = false;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
+            this.button6.ForeColor = System.Drawing.Color.Transparent;
             this.button6.Location = new System.Drawing.Point(232, 16);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(32, 64);
             this.button6.TabIndex = 6;
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.piezaElegida);
             // 
             // button7
             // 
+            this.button7.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button7.Enabled = false;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
+            this.button7.ForeColor = System.Drawing.Color.Transparent;
             this.button7.Location = new System.Drawing.Point(272, 16);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(32, 64);
             this.button7.TabIndex = 5;
-            this.button7.UseVisualStyleBackColor = true;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.piezaElegida);
             // 
             // button5
             // 
+            this.button5.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button5.Enabled = false;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
+            this.button5.ForeColor = System.Drawing.Color.Transparent;
             this.button5.Location = new System.Drawing.Point(192, 16);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(32, 64);
             this.button5.TabIndex = 4;
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.piezaElegida);
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button4.Enabled = false;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
+            this.button4.ForeColor = System.Drawing.Color.Transparent;
             this.button4.Location = new System.Drawing.Point(152, 16);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(32, 64);
             this.button4.TabIndex = 3;
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.piezaElegida);
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button3.Enabled = false;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
+            this.button3.ForeColor = System.Drawing.Color.Transparent;
             this.button3.Location = new System.Drawing.Point(112, 16);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(32, 64);
             this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.piezaElegida);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button2.Enabled = false;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
+            this.button2.ForeColor = System.Drawing.Color.Transparent;
             this.button2.Location = new System.Drawing.Point(72, 16);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(32, 64);
             this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.piezaElegida);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.button1.Enabled = false;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F);
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
             this.button1.Location = new System.Drawing.Point(32, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 64);
             this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(279, 16);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(94, 64);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "Empezar\r\nRonda";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.empezar);
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.piezaElegida);
             // 
             // ventanaJuego
             // 
@@ -433,5 +525,8 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label dialogos;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button9;
     }
 }

@@ -8,15 +8,15 @@ namespace practicaLogica2
 {
     class NodoDoble
     {
-        private object dato;
+        private ficha dato;
         private NodoDoble li, ld;   //liga izquierda, liga derecha
         //constructor
-        public NodoDoble(object dato)
+        public NodoDoble(ficha dato)
         {
             this.dato = dato;
         }
         //getters and setters
-        public object getDato()
+        public ficha getDato()
         {
             return this.dato;
         }

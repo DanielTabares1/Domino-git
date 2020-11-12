@@ -37,7 +37,7 @@ namespace practicaLogica2
         {
             return p == null;
         }
-        public void insertarDerecha(object dato)
+        public void insertarDerecha(ficha dato)
         {
             NodoDoble x = new NodoDoble(dato);
             if(primero == null)  //si está vacía
@@ -52,7 +52,7 @@ namespace practicaLogica2
                 ultimo = x;
             }
         }
-        public void insertarIzquierda(object dato)
+        public void insertarIzquierda(ficha dato)
         {
             NodoDoble x = new NodoDoble(dato);
             if(primero == null) //está vacía

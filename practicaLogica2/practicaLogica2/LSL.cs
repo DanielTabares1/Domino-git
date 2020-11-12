@@ -114,11 +114,11 @@ namespace practicaLogica2
         }
         public bool existe(ficha d)
         {
-            ficha buscada = (ficha)d;
+            ficha buscada = d;
             NodoSimple p = primero;
             while(p!= null)
             {
-                ficha f = (ficha)p.getDato();
+                ficha f = p.getDato();
                 if(buscada.Izquierda == f.Izquierda && buscada.Derecha == f.Derecha)
                 {
                     return true;
@@ -128,13 +128,12 @@ namespace practicaLogica2
             return false;
         }
         public bool existe1(ficha d)
-        {
-            ficha buscada = (ficha)d;
+        {            
             NodoSimple p = primero;
-            while (p != null)
+            while (!finDeRecorrido(p))
             {
-                ficha f = (ficha)p.getDato();
-                if (buscada.Izquierda == f.Izquierda || buscada.Derecha == f.Derecha)
+                ficha f = p.getDato();
+                if (d.Izquierda == f.Izquierda || d.Derecha == f.Derecha)
                 {
                     return true;
                 }
@@ -143,7 +142,7 @@ namespace practicaLogica2
             return false;
         }        
         public int indexOf(ficha f)
-        {
+        {            
             NodoSimple p = primero;
             int indice = 0;
             while(!finDeRecorrido(p) && p.getDato().Izquierda != f.Izquierda &&

@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace practicaLogica2
 {
     class principal
-    {
-        public static void principal1()
-        {
+    {        
+        public static void principal1(ventanaJuego ventana)
+        {           
             // Create a list of fichas.
             LSL fichas1 = new LSL();
             //List<ficha> fichas = new List<ficha>();  
@@ -48,8 +50,7 @@ namespace practicaLogica2
                     ficha f = p.getDato();
                     Console.WriteLine(f.Izquierda + " " + f.Derecha);
                     p = p.getLiga();
-                }
-                
+                }                
             }
             void imprimirjuego(LDL juego)
             {
@@ -162,7 +163,6 @@ namespace practicaLogica2
                 Console.WriteLine("El puntaje de usted es:" + puntajes1[3]);
             }
 
-
             while (puntajes1[0] < 101 && puntajes1[1] < 101 && puntajes1[2] < 101 && puntajes1[3] < 101)
             {
                 fichas1 = new LSL();
@@ -187,18 +187,24 @@ namespace practicaLogica2
 
                 void Imprimirlistajugadores()
                 {
+                    ventana.Update();
                     Console.WriteLine("Las fichas de " + jugador0 + " son:");
                     imprimirlista1(hugo1);
+                    ventana.pintarFichasPatos(hugo1, 1);
                     Console.WriteLine("Las fichas de " + jugador1 + " son:");
                     imprimirlista1(paco1);
+                    ventana.pintarFichasPatos(paco1, 2);
                     Console.WriteLine("Las fichas de " + jugador2 + " son:");
                     imprimirlista1(luis1);
+                    ventana.pintarFichasPatos(luis1, 3);
                     Console.WriteLine("Las fichas de usted son:");
                     imprimirlista1(usted1);
+                    ventana.botones = usted1;
+                    ventana.pintarBotones();
                 }
 
                 void Repartir1(LSL persona)
-                {
+                {                                       
                     for (int i = 0; i < 7; i++)
                     {
                         var rand = new Random();
@@ -206,13 +212,13 @@ namespace practicaLogica2
                         NodoSimple p = fichas1.primerNodo();
                         for (int k = 0; k < nuevo-1; k++)
                         {
-                            p = p.getLiga();
-                            Console.WriteLine(p.getDato().Derecha + " " + p.getDato().Izquierda);
+                            p = p.getLiga();                            
                         }
                         persona.insertar(p.getDato());                         
                         fichas1.desconectar(p);
                         Thread.Sleep(100);
                     }
+                    Thread.Sleep(2000);
                 }
                 /*void Repartir(List<ficha> persona)
                 {
@@ -224,11 +230,12 @@ namespace practicaLogica2
                         fichas.RemoveAt(nuevo);
                     }
                 }*/
-
+                ventana.msg("Repartiendo...");
+                ventana.Update();
                 Repartir1(hugo1);
                 Repartir1(paco1);
                 Repartir1(luis1);
-                Repartir1(usted1);
+                Repartir1(usted1);         
                 Imprimirlistajugadores();
                 LDL juego1 = new LDL();
                 LSL posible1 = new LSL();
@@ -269,6 +276,8 @@ namespace practicaLogica2
                 {
                     Console.WriteLine(jugador0 + " empezó con el 6-6");
                     actual = 1;
+                    ventana.bajart(1);
+                    ventana.Show();
                 }
 
                 Empieza1(paco1);
@@ -276,6 +285,8 @@ namespace practicaLogica2
                 {
                     Console.WriteLine(jugador1 + " empezó con el 6-6");
                     actual = 2;
+                    ventana.bajart(2);
+                    ventana.Show();
                 }
 
                 Empieza1(luis1);
@@ -283,6 +294,8 @@ namespace practicaLogica2
                 {
                     Console.WriteLine(jugador2 + " empezó con el 6-6");
                     actual = 3;
+                    ventana.bajart(3);
+                    ventana.Show();
                 }
 
                 Empieza1(usted1);
@@ -654,8 +667,10 @@ namespace practicaLogica2
 
                         bool encontrada = false;
                         Console.WriteLine("Es el turno de: Usted");
+                        ventana.Update();
+                        ventana.elegir(usted1);
                         Console.WriteLine("Por la derecha puede poner fichas que tengan: " + comienzo);
-                        Console.WriteLine("Por la izquierda puede poner fichas que tengan: " + final);
+                        Console.WriteLine("Por la izquierda puede poner fichas que tengan: " + final);                        
                         ficha e = new ficha(final, comienzo);
                         ficha e1 = new ficha(comienzo, final);
                         if(turnos1[actual].existe1(e) || turnos1[actual].existe1(e1))
@@ -694,6 +709,7 @@ namespace practicaLogica2
                             Console.WriteLine("Ingrese su elección de ficha con cada numero separado por enter");
                             while(encontrada == false)
                             {
+
                                 int posibleizquierda = Convert.ToInt32(Console.ReadLine());
                                 int posiblederecha = Convert.ToInt32(Console.ReadLine());
                                
