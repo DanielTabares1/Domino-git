@@ -18,11 +18,10 @@ namespace practicaLogica2
         }
 
         private void comenzar(object sender, EventArgs e)
-        {
-
-            this.Close();
+        {            
             ventanaJuego ventana = new ventanaJuego(textBox2.Text, textBox3.Text, textBox4.Text, textBox1.Text);
             ventana.Show();
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

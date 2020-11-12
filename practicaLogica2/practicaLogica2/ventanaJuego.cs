@@ -35,11 +35,15 @@ namespace practicaLogica2
 
 
         private void empezar(object sender, EventArgs e)
-        {            
-            for(int i = 0; i < 4; i++)
-            {
-                Console.Write(puntajes1[i] + "  ");
-            }
+        {
+            puede[0] = true;
+            puede[1] = true;
+            puede[2] = true;
+            puede[3] = true;
+            label1.Text = nombre1;
+            label2.Text = nombre2;
+            label3.Text = nombre3;
+            label4.Text = nombreJugador;
             fichas1 = new LSL();
             juego1 = new LDL();
             hugo1 = new LSL();
@@ -131,13 +135,8 @@ namespace practicaLogica2
         public ventanaJuego(string nombre1, string nombre2, string nombre3, string nombreJugador)
         {
             InitializeComponent();
-            this.Show();
-            label1.Text = nombre1;
-            label2.Text = nombre2;
-            label3.Text = nombre3;
-            label4.Text = nombreJugador;
-            this.Update();
-            
+            this.Show();            
+            this.Update();            
             jugadores = new string[3];
             jugadores[0] = nombre1;
             jugadores[1] = nombre2;
@@ -402,15 +401,7 @@ namespace practicaLogica2
             dialogos.Update();
             dialogos.Text = msg;
         }
-        public void cambiarRotacion(bool b)
-        {
-            if (b == true)
-            {
-                b = false;
-                return;
-            }
-            b = true;
-        }
+        
 
 
         //métodos de pricnipal
@@ -526,7 +517,7 @@ namespace practicaLogica2
             }
         }
         public void jugarOponente()
-        {
+        {            
             while (actual != 3)
             {
                 if(puede[0]==false && puede[1] == false && puede[2] == false && puede[3] == false)
@@ -580,7 +571,7 @@ namespace practicaLogica2
                                 xi = 11; xd = 11; yi = 1; yd = 1;
                                 button8.Visible = true;
                                 return;
-                                //actualizar puntos, re construir juego xd agriaaa
+                                
                             }
                         }
                         else if (a.Derecha == comienzo)
@@ -612,40 +603,9 @@ namespace practicaLogica2
                         p = p.getLiga();
                     }
                     //turnos1[actual].desconectar(p);                    
-
-                    Console.WriteLine("El juego esta así:");
-                    imprimirjuego(juego1);
+                                        
                     pintarFichasPatos(turnos1[actual], actual+1);
-                    this.Update();
-
-                    if (turnos1[actual].length > 1)
-                    {
-                        puede[0] = true;
-                        puede[1] = true;
-                        puede[2] = true;
-                        puede[3] = true;
-                    }
-                    else
-                    {
-                        puede[actual] = false;
-                        Console.WriteLine("El jugador " + jugadores[actual] + " ganó (dominó) esta ronda.");
-                        if (actual == 0)
-                        {
-                            sumatoria1(actual, turnos1[1], turnos1[2], turnos1[3], puntajes1);
-                        }
-
-                        if (actual == 1)
-                        {
-                            sumatoria1(actual, turnos1[0], turnos1[2], turnos1[3], puntajes1);
-                        }
-
-                        if (actual == 2)
-                        {
-                            sumatoria1(actual, turnos1[0], turnos1[1], turnos1[3], puntajes1);
-                        }
-                        Imprimirlistapuntajes();
-                        ganador = true;
-                    }
+                    this.Update();                   
                 }
                 else
                 {
@@ -712,45 +672,13 @@ namespace practicaLogica2
                             i++;
                             p = p.getLiga();
                         }                        
-                        Console.WriteLine("El juego esta así:");
-                        imprimirjuego(juego1);
+                        
                         pintarFichasPatos(turnos1[actual], actual+1);
                         this.Update();
-
-                        if (turnos1[actual].length > 1)
-                        {
-                            puede[0] = true;
-                            puede[1] = true;
-                            puede[2] = true;
-                            puede[3] = true;
-                        }
-                        else
-                        {
-                            puede[actual] = false;
-                            Console.WriteLine("El jugador " + jugadores[actual] + " ganó (dominó) esta ronda.");
-                            if (actual == 0)
-                            {
-                                sumatoria1(actual, turnos1[1], turnos1[2], turnos1[3], puntajes1);
-                            }
-
-                            if (actual == 1)
-                            {
-                                sumatoria1(actual, turnos1[0], turnos1[2], turnos1[3], puntajes1);
-                            }
-
-                            if (actual == 2)
-                            {
-                                sumatoria1(actual, turnos1[0], turnos1[1], turnos1[3], puntajes1);
-                            }
-                            Imprimirlistapuntajes();
-                            ganador = true;
-                        }
                     }
                     else
                     {
-                        Console.WriteLine("El jugador no tiene fichas para poner");
-                        Console.WriteLine("El juego esta así:");
-                        imprimirjuego(juego1);
+                        
                         puede[actual] = false;
                     }
                 }
@@ -886,10 +814,10 @@ namespace practicaLogica2
         }
         public void pueden()
         {
-            for(int i = 0; i < 4; i++)
-            {
-                puede[i] = true;
-            }
+            puede[0] = true;
+            puede[1] = true;
+            puede[2] = true;
+            puede[3] = true;
         }
         public void sumarPuntaje()
         {
@@ -938,7 +866,7 @@ namespace practicaLogica2
             {
                 MessageBox.Show("PartidaTerminada, el ganador es " + jugadores[0]);
                 ventanaLogin v = new ventanaLogin();
-                v.Show();
+                v.Show();         
                 this.Close();
             }
             if (puntajes1[1] > 101)
