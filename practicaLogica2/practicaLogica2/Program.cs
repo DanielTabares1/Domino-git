@@ -13,11 +13,11 @@ namespace practicaLogica2
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        {            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             VentanaInicio ventanainicio1 = new VentanaInicio();
-            Application.Run(ventanainicio1);
+            Application.Run(ventanainicio1);            
         }
     }
 }

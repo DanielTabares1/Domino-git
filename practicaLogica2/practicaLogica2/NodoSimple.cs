@@ -8,14 +8,14 @@ namespace practicaLogica2
 {
     public class NodoSimple
     {
-        private object dato;
+        private ficha dato;
         private NodoSimple liga;
 
-        public NodoSimple(object dato)          //Constructor
+        public NodoSimple(ficha dato)          //Constructor
         {
             this.dato = dato;
         }
-        public object getDato()                 //getters
+        public ficha getDato()                 //getters
         {
             return this.dato;
         }

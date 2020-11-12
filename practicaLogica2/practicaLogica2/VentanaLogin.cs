@@ -19,16 +19,17 @@ namespace practicaLogica2
 
         private void comenzar(object sender, EventArgs e)
         {
-            ventanaJuego ventanaJuego1 = new ventanaJuego(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
-            ventanaJuego1.Show();
-            this.Hide();            
+
+            this.Close();
+            ventanaJuego ventana = new ventanaJuego(textBox2.Text, textBox3.Text, textBox4.Text, textBox1.Text);
+            ventana.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VentanaInicio v = new VentanaInicio();
-            v.Show();
             this.Close();
+            VentanaInicio v = new VentanaInicio();
+            v.Show();            
         }
     }
 }
