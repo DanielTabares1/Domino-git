@@ -35,7 +35,7 @@ namespace practicaLogica2
 
 
         private void empezar(object sender, EventArgs e)
-        {
+        {            
             for(int i = 0; i < 4; i++)
             {
                 Console.Write(puntajes1[i] + "  ");
@@ -150,7 +150,7 @@ namespace practicaLogica2
             {
                 Graphics h = pictureBox1.CreateGraphics();
                 h.Clear(Color.White);
-                Image ficha1 = Image.FromFile("fichas/ficha.png");
+                Image ficha1 = Image.FromFile("ficha.png");
                 ficha1.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 for (int i = 0; i < lista.length; i++)
                 {
@@ -395,12 +395,7 @@ namespace practicaLogica2
         }
         public void bajart(int pato)
         {
-            switch (pato)
-            {                
-                default:
-                    Console.WriteLine("ni culo");
-                    break;
-            }
+            
         }
         public void msg(string msg)
         {
@@ -536,8 +531,9 @@ namespace practicaLogica2
             {
                 if(puede[0]==false && puede[1] == false && puede[2] == false && puede[3] == false)
                 {
-                    MessageBox.Show("Nadie puede poner, el ganado será elegido por puntos", "Ronda terminada", MessageBoxButtons.OK);
+                    MessageBox.Show("Nadie puede poner, el ganador será elegido por puntos", "Ronda terminada", MessageBoxButtons.OK);
                     sumarPorPuntos();
+                    verJuegoTerminado();
                     Graphics g = juego.CreateGraphics();
                     g.Clear(Color.DarkGreen);
                     xi = 11; xd = 11; yi = 1; yd = 1;
@@ -578,6 +574,7 @@ namespace practicaLogica2
                                 pintarFichasPatos(turnos1[actual], actual + 1);
                                 MessageBox.Show(jugadores[actual]+" ganó la ronda actual", "Ronda terminada", MessageBoxButtons.OK);
                                 sumarPuntaje();
+                                verJuegoTerminado();
                                 Graphics g = juego.CreateGraphics();
                                 g.Clear(Color.DarkGreen);
                                 xi = 11; xd = 11; yi = 1; yd = 1;
@@ -602,6 +599,7 @@ namespace practicaLogica2
                                 pintarFichasPatos(turnos1[actual], actual + 1);
                                 MessageBox.Show(jugadores[actual] + " ganó la ronda actual", "Ronda terminada", MessageBoxButtons.OK);
                                 sumarPuntaje();
+                                verJuegoTerminado();
                                 Graphics g = juego.CreateGraphics();
                                 g.Clear(Color.DarkGreen);
                                 xi = 11; xd = 11; yi = 1; yd = 1;
@@ -676,6 +674,7 @@ namespace practicaLogica2
                                     pintarFichasPatos(turnos1[actual], actual + 1);
                                     MessageBox.Show(jugadores[actual] + " ganó la ronda actual", "Ronda terminada", MessageBoxButtons.OK);
                                     sumarPuntaje();
+                                    verJuegoTerminado();
                                     Graphics g = juego.CreateGraphics();
                                     g.Clear(Color.DarkGreen);
                                     xi = 11; xd = 11; yi = 1; yd = 1;
@@ -701,6 +700,7 @@ namespace practicaLogica2
                                     pintarFichasPatos(turnos1[actual], actual + 1);
                                     MessageBox.Show(jugadores[actual] + " ganó la ronda actual", "Ronda terminada", MessageBoxButtons.OK);
                                     sumarPuntaje();
+                                    verJuegoTerminado();
                                     Graphics g = juego.CreateGraphics();
                                     g.Clear(Color.DarkGreen);
                                     xi = 11; xd = 11; yi = 1; yd = 1;
@@ -791,6 +791,7 @@ namespace practicaLogica2
             {
                 MessageBox.Show("Usted ganó la ronda actual", "Ronda terminada", MessageBoxButtons.OK);
                 sumarPuntaje();
+                verJuegoTerminado();
                 Graphics g = juego.CreateGraphics();
                 g.Clear(Color.DarkGreen);
                 xi = 11;xd = 11;yi = 1;yd = 1;
@@ -912,24 +913,55 @@ namespace practicaLogica2
         }
         public void sumarPorPuntos()
         {
+            sumatoriapersonal1(hugo1, 0);
+            sumatoriapersonal1(paco1, 0);
+            sumatoriapersonal1(luis1, 0);
+            sumatoriapersonal1(usted1, 0);
             int menor = 0;
-            for(int i = 0; i < 4; i++)
+            for(int i = 1; i <=3 ; i++)
             {
-                sumatoriapersonal1(turnos1[i],i);
-                if (puntajesronda1[i] < puntajesronda1[menor])
+                if(puntajesronda1[i] < puntajesronda1[menor])
                 {
                     menor = i;
                 }
-            }
-            int sumatoria = 0;
+            }            
             for(int i = 0; i < 4; i++)
             {
-                if (i != menor)
-                {
-                    sumatoria += puntajesronda1[i]-puntajesronda1[menor];
-                }
+                puntajes1[menor] += puntajesronda1[i] - puntajesronda1[menor];
             }
-            
+
+            msg(puntajes1[0] + "  " + puntajes1[1] + "  " + puntajes1[2] + "  " + puntajes1[3]);
+        }
+        public void verJuegoTerminado()
+        {
+            if (puntajes1[0] > 101)
+            {
+                MessageBox.Show("PartidaTerminada, el ganador es " + jugadores[0]);
+                ventanaLogin v = new ventanaLogin();
+                v.Show();
+                this.Close();
+            }
+            if (puntajes1[1] > 101)
+            {
+                MessageBox.Show("PartidaTerminada, el ganador es " + jugadores[1]);
+                ventanaLogin v = new ventanaLogin();
+                v.Show();
+                this.Close();
+            }
+            if (puntajes1[0] > 101)
+            {
+                MessageBox.Show("PartidaTerminada, el ganador es " + jugadores[2]);
+                ventanaLogin v = new ventanaLogin();
+                v.Show();
+                this.Close();
+            }
+            if (puntajes1[0] > 101)
+            {
+                MessageBox.Show("PartidaTerminada, el ganador es usted\nFelicitaciones!");
+                ventanaLogin v = new ventanaLogin();
+                v.Show();
+                this.Close();
+            }
         }
 
 
@@ -1023,6 +1055,5 @@ namespace practicaLogica2
                 buttons[i].Enabled = false;
             }
         }
-
     }
 }
